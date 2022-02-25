@@ -52,8 +52,45 @@
 // const b = a
 // console.log(a == b)
 
-const nome = ""
-console.log(!!nome)
-console.log(nome !== "")
-const nome2 = "Lulu"
-console.log(!!nome2)
+// const nome = ""
+// console.log(!!nome)
+// console.log(nome !== "")
+// const nome2 = "Lulu"
+// console.log(!!nome2)
+// console.log('b' + 'a' + + 'a' + 'a')
+
+// v1 = []
+// console.log(v1.length)
+
+
+// v1[0] = 3.4
+// v1[10] = 2
+// v1[2] = true
+// console.log(v1.length)
+
+// for (let i = 0; i< v1.length; i++){
+//     console.log(v1[i])
+// }
+
+// v1.forEach((a) => console.log(a))
+// const numeros = [1,2]
+// numeros[0] = 2
+// console.log(numeros)    
+
+// const numeros = [1,2]
+// console.log(numeros.length)    
+// numeros[4] = 2
+// console.log(numeros.length)    
+
+const nomes = ["Ana Maria", "Antonio", "Rodrigo", "Alex", "Cristina"]
+
+// arrow function
+// notação dela:
+// () => {}
+// function filter (funcao){
+//     funcao()
+// }
+const apenasA= nomes.filter((n) =>{
+    return n.startsWith("A")
+});
+console.log(apenasA)
