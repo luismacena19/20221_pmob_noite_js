@@ -82,7 +82,7 @@
 // numeros[4] = 2
 // console.log(numeros.length)    
 
-const nomes = ["Ana Maria", "Antonio", "Rodrigo", "Alex", "Cristina"]
+//const nomes = ["Ana Maria", "Antonio", "Rodrigo", "Alex", "Cristina"]
 
 // arrow function
 // notação dela:
@@ -90,7 +90,131 @@ const nomes = ["Ana Maria", "Antonio", "Rodrigo", "Alex", "Cristina"]
 // function filter (funcao){
 //     funcao()
 // }
-const apenasA= nomes.filter((n) =>{
-    return n.startsWith("A")
-});
-console.log(apenasA)
+// const apenasA= nomes.filter((n) =>{
+//     return n.startsWith("A")
+// });
+// console.log(apenasA)
+
+// var vencedores = [
+//     {
+//         nome : "Equipe Super",
+//         pais : "Brasil"
+//     },
+//     {
+//         nome : "Time Maximo",
+//         pais : "EUA"
+//     },
+//     {
+//         nome : "Mega Grupo",
+//         pais : "Canadá"
+//     }
+//  ];
+ 
+//  var podioPorPais = vencedores.map(function(item, indice){
+//     return item.pais;
+//  });
+ 
+// console.log(podioPorPais);
+/////
+//IO-Bound sequencia de op com entrada e saida de dados. Executa de forma paralela apesar de js operar de forma sequencial
+//CPU-Bound sequencia de op que utiliza a cpu como contas
+
+//IO-Bound - processamento assincrono(assincrona, não bloqueante)
+// esses funcs chamando outros são chamados de hell, callback hell
+// const fs = require ('fs') // import
+// const abrirArquivo = function(nomeArquivo){
+//     const exibirConteudo = function (erro, conteudo){
+//         if (erro){
+//             console.log('Erro: ' + erro)
+//         }
+//         else{
+//             console.log("OK: " + conteudo.toString())
+//             const dobro = +conteudo.toString() * 2
+//             console.log("Valor calculado: " + dobro)
+//             const finalizar = function (erro){
+//                 if (erro)
+//                     console.log("Erro: " + erro)
+//                 else
+//                     console.log("OK, escreveu")           
+//             }
+//             fs.writeFile('dobro.txt', dobro.toString(), finalizar)
+//         }
+        
+//     }
+
+//     //segundo parâmetro: funcção callback
+
+//     fs.readFile('arquivo.txt',exibirConteudo) 
+//     console.log("outra coisa")
+// }
+
+// abrirArquivo('arquivo.txt')
+
+// solução são as promises(é objeto, da ec6 de 2015)
+// é um objeto que tem a ele associado um fluxo de execuções
+//// paralelismo são necessariamente IO-Bound
+// uma promise pode ser pending, fullfilled ou rejected
+// // sem promise:
+// const devolveUm (){
+//     return 1
+// }
+// const resultado = devolveUm()
+// console.log(resultado)
+
+
+// usando o promise
+// function devolveUm (){
+//     let p = new Promise((resolve, reject) =>{
+//         resolve(1)
+//     })
+//     return p
+// }
+// const resultado = devolveUm()
+// resultado.then((res) => console.log(res))
+
+//1 + 2 + ... + n
+// const calculoDemorado = (n) => {
+//     let p = new Promise ((resolve, reject) => {
+//         if (n < 0)
+//             reject('Não use números regativos')
+//         else{
+//         let res = 0
+//         for (let i = 1; i <= n; i++)
+//             res += i
+//         resolve(res)
+//     }
+// })
+//     return p
+// }
+// // // posso:
+// // const r = calculoDemorado(10)
+// // r.then()
+// calculoDemorado(-10)
+// .then ((res) => {console.log (res)})
+// .catch((erro) => {console.log("Erro: " +erro)})
+// promise sempre nasce com estado pending
+// podemos criar um promise com outro estado
+
+// const calculoRapido = (n) => {
+//     return Promise.resolve((n * (n + 1)) / 2)
+// }
+// calculoRapido(10).then((res) => console.log (res))
+
+// exec 3min
+// a mesma coisa que a calculoRapidinho faz sem usar "Promise.resove"
+
+// ////minha
+// const f = (n) => {
+//     return new Promise((resolve, reject) => {
+//         n * (n + 1) / 2
+//     })
+// }
+// f(10).then((res) => console.log(res))
+
+//// prof
+const f = (n) => {
+    return new Promise ((resolve,reject) => {
+        resolve((n * (n +1)) / 2)
+    })
+} 
+f(10).then((res) => console.log(res))
